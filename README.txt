@@ -2,7 +2,8 @@ This is a collection of projects made in Visual Studio Community 2015. Some thin
 
 Currently, there are the following projects in this git repository:
 
-TextLineGameThing - The first version of a command line game I made based off of these tutorials: [link]
+TextLineGameThing - The first version of a command line game I made based off of
+these tutorials: http://cplussplussatplay.blogspot.com/2012/11/text-adventure-games-c-part-1.html
 I made my own story and build, since I wanted to incorporate combat and leveling mechanics.
 
 TextLineGameThing2 - The second version of a command line game I made based off the tutorials above.
