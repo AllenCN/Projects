@@ -1,0 +1,83 @@
+0
+Town Square
+The center of the town, where Boss Mad awaits all challengers. Can you possibly defeat him!?
+4
+3
+1
+5
+N/A
+N/A
+BOSS
+N/A
+
+1
+Town Park
+The south park, where a statue waits to the east.
+0
+2
+-1
+-1
+N/A
+GATE
+MINT
+N/A
+
+2
+Statue of Boss Mad
+A statue of Boss Mad. At the base, someone has spraypainted a picture of dung...
+-1
+-1
+-1
+1
+0.15
+GATE,STATUE
+N/A
+THUG
+
+3
+Local Shop
+A shop, headed by someone who wants to see Boss Mad taken down. But don't expect his services to come cheap!
+-1
+-1
+-1
+0
+N/A
+N/A
+RAY
+N/A
+
+4
+North Dojo
+A dojo run by someone who wants to see Boss Mad defeated ASAP. Talk to him to learn skills.
+-1
+-1
+0
+-1
+N/A
+BOX
+DAVE
+N/A
+
+5
+West Tower
+A tower that was subject to a horrific science accident not long ago. Since then, it's a hangout for the monsters and mutants, as well as the local thugs. Careful.
+6
+0
+-1
+-1
+0.3
+OINTMENT,OINTMENT,POTION
+N/A
+THUG,RAT
+
+6
+Abandoned Lab
+A lab that was abandoned a long time ago. Powerful monsters lurk nearby. Watch out.
+-1
+-1
+5
+-1
+0.45
+SENZU,POTION
+N/A
+RAT,BEAST

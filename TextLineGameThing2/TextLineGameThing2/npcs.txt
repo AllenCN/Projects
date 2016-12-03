@@ -1,0 +1,38 @@
+0
+MINT
+Mint
+A scared bystander who wants to see Boss Mad taken down, but doesn't know if it can be done.
+A-are you here to take on Boss Mad? Do you not know how strong he is!?
+I-I don't fight...!
+I... don't have things to sell you...
+
+2
+RAY
+Ray
+A man whose prospects have been in the shitter for a while. He'll help you out... for a price!
+You want somethin'? Use the SHOP command to talk to me.
+I don't fight. If I did, you think I'd still be in business?
+Welcome! I'll sell you whatever you need to take down that bastard!
+Anything else you need?
+Thank you, and give that bastard Boss Mad hell from me!
+SENZU,100
+OINTMENT,50
+POTION,50
+
+1
+DAVE
+Dave
+An old sage who can make you stronger if you're willing. He, too, wishes to see Boss Mad taken down.
+Do you feel you're not strong enough to take on Boss Mad? Train with me using the ENGAGE command.
+You wish to train with me? Very well, but I warn you, I am pretty sink-or-swim...
+I don't have anything to sell.
+0
+
+1
+BOSS
+Boss Mad
+The main villain of the game. He looks just as imposing as you'd expect him to.
+A newcomer, huh? You got what it takes to stand up to me?
+So you think you got what it takes to stand up to me? Prepare to have that thought crushed out of you!
+The only thing I sell is an ass-kicking. Get out of here with that!
+1

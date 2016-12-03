@@ -1,0 +1,39 @@
+help - displays this help
+north | east | west | south - move in this direction, if you can
+look - look around the room to see any NPCs, items, or exits in the area
+examine [noun] - examine a noun for their description
+inventory - display your inventory
+get [noun] - grab a noun in the area and add it to inventory, if possible
+drop [noun] - drop an item from the inventory. Does not work on gold.
+use [noun] - use an item in your inventory. May not work on everything.
+open [gate | door] - open the gate or door in the area.
+close [gate | door] - close the gate or door in the area.
+talk [npc] - talk to the npc indicated (codes for that given in look)
+shop [npc] - if npc is shopkeeper, talk to them to initiate the shop sequence
+stats - display player's current status
+equip [noun] - equip an item that can be equipped in the inventory, if possible.
+unequip [noun] - unequip an item equipped to you and return it into the inventory.
+rest - regain health in battle, may lead to random encounter.
+engage [npc] - not implemented yet - asks indicated npc for battle.
+-----------------
+SHOP COMMANDS ONLY
+
+buy [item] - buy the item from their store.
+sell [item] - if they sell the item and you have it, sell it to them.
+menu - display the store's menu
+inventory - See current inventory
+help - displays this help
+exit - Exit store sequence
+------------------
+COMBAT COMMANDS ONLY
+
+attack - attacks an enemy.
+attack [enemy] - attacks the specified enemy.
+use [item] - same as above
+use [skill] - attacks specified enemy with specified skill.
+use [skill] [enemy] - uses the skill on the enemy, enemy naming optional.
+flee - retreat from battle. Does not always work.
+stats - view the stats of those in battle.
+inventory - view your items mid-battle.
+help - displays this help
+rest - regain some health in battle, uses up turn.

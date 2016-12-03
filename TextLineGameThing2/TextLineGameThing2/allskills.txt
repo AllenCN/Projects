@@ -1,0 +1,111 @@
+Power Punch
+PUNCH
+0
+25
+15
+
+Energy Ball
+BALL
+1
+30
+20
+
+Speed Kick
+KICK
+0
+20
+10
+
+Ultra Strike
+STRIKE
+0
+40
+25
+
+Trap Shooter
+SHOOTER
+1
+50
+35
+
+Blitz Burst
+BLITZ
+0
+40
+30
+
+Kaioken x2
+KAIOKEN
+2
+2
+20
+KAIOKEN
+0
+0
+0
+0
+0
+0
+0
+
+Kaioken x5
+KAIOKEN5
+2
+5
+40
+KAIOKEN5
+0
+0
+0
+0
+0
+0
+
+Kaioken x10
+KAIOKEN10
+2
+10
+50
+KAIOKEN10
+0
+0
+0
+0
+0
+0
+
+Strength Up
+STRENGTH
+2
+0
+15
+3
+5
+5
+0
+0
+-3
+
+Power Up
+POWER
+2
+0
+15
+3
+-1
+-1
+5
+5
+-1
+
+Speed Up
+SPEED
+2
+0
+20
+4
+-1
+-1
+-1
+-1
+9

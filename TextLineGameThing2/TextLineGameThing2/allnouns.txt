@@ -1,0 +1,76 @@
+sword,blade
+2
+a sword
+A sword made of steel. Given to you at the start of the game.
+2
+3
+0
+0
+0
+0
+
+shield
+2
+a shield
+A shield made of steel. Also given to you at the start of the game.
+1
+0
+3
+0
+2
+0
+
+senzu
+1
+a senzu bean
+An odd bean that apparently restores all your health and mana.
+9999
+9999
+You feel incredibly full and healthy. HP and MP fully restored!
+
+ointment
+1
+wound ointment
+An ointment that goes on wounds. It stings, but will restore health.
+50
+0
+You rub the ointment on your wounds. HP restored!
+
+potion
+1
+magic potion
+A potion that you drink to restore your mana. It is awfully bitter, though...
+0
+50
+You drink the magic potion. MP restored!
+
+gold,money
+1
+gold
+The currency of the land, which glimmers under the faintest of light. Guard it well.
+0
+0
+You can't use this except in stores.
+1
+
+statue,sculpture
+0
+a statue
+A statue of Boss Mad. Boss Mad's gonna be pissed when he sees that turd spraypainted on it.
+
+box
+2
+cardboard box
+A cardboard box. Why is this even here!?
+0
+0
+0
+0
+0
+0
+ENCRATE 0.5
+
+gate
+0
+a rusty gate
+A rusted gate seperating the park from a statue of Boss Mad.

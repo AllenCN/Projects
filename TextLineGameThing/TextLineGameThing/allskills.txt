@@ -1,0 +1,10 @@
+Hot-Blooded Punch,PUNCH,0,10,0,0,0,0,0,0,1.5
+Energy Ball,BALL,1,10,0,0,0,0,0,0,1.5
+Speed Kick,KICK,0,10,0,0,0,0,0,0,1.5
+Ultra Strike,STRIKE,0,20,0,0,0,0,0,0,1.8
+Trap Shooter,SHOOTER,1,20,0,0,0,0,0,0,1.8
+Blitz Burst,BLITZ,0,20,0,0,0,0,0,0,1.8
+Kaioken Attack,KAIOKEN,0,35,15,10,10,10,10,10,2.0
+Kaioken Blast,KAIOKEN,1,35,15,10,10,10,10,10,2.0
+Speed Burst,BURST,0,35,0,5,0,0,0,10,2.0
+Stronger Kaioken Attack,KAIOKEN5,0,50,30,20,20,20,20,20,5.0

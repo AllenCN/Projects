@@ -1,0 +1,43 @@
+Turn 1
+Corey ends his turn.
+Turn 2
+Zach ends his turn.
+Turn 3
+Luke ends his turn.
+Turn 4
+Corey ends his turn.
+Turn 5
+	(Corey 8000 -> 6800)
+Turn 5
+	(Zach 8000 -> 10000)
+Turn 5
+Zach ends his turn.
+Turn 6
+	(Luke 8000 -> 6000)
+Turn 6
+	(Zach 10000 -> 7000)
+Turn 6
+	(Corey 6800 -> 900)
+Turn 6
+	(Corey 900 -> 100)
+Turn 6
+	(Corey 100 -> 50)
+Turn 6
+	(Corey 50 -> 0)
+	Corey was defeated.
+
+Turn 6
+Luke ends his turn.
+Turn 7
+	(Luke 6000 -> 1000)
+Turn 7
+	(Luke 1000 -> 100)
+Turn 7
+	(Zach 7000 -> 3500)
+Turn 7
+Zach ends his turn.
+Turn 8
+	(Zach 3500 -> 0)
+	Zach was defeated.
+
+Luke wins!

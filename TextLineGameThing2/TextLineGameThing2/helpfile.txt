@@ -1,0 +1,43 @@
+help - displays this help
+north | east | west | south - move in this direction, if you can
+look - look around the room to see any NPCs, items, or exits in the area
+[examine | check] [noun] - examine a noun for their description
+[inventory | bag] - display your inventory
+[get | take | grab] [noun] - grab a noun in the area and add it to inventory, if possible
+[drop | discard] [noun] - drop an item from the inventory. Does not work on gold.
+[use | utilize] [noun] - use an item in your inventory. May not work on everything.
+open [gate | door] - open the gate or door in the area.
+[close | shut] [gate | door] - close the gate or door in the area.
+[talk | speak] [npc] - talk to the npc indicated (codes for that given in look)
+shop [npc] - if npc is shopkeeper, talk to them to initiate the shop sequence
+[stats | status] - display player's current status
+equip [noun] - equip an item that can be equipped in the inventory, if possible.
+unequip [noun] - unequip an item equipped to you and return it into the inventory.
+[rest | wait] - regain health on map, may lead to random encounter.
+[engage | fight] [npc] - not implemented yet - asks indicated npc for battle.
+save - save game to text file, will prompt you for file name
+load [textfile.txt] - load game from specified file
+[exit | done | quit] - Exit the game (WARNING: DOES NOT PROMPT YOU TO SAVE)
+-----------------
+SHOP COMMANDS ONLY
+
+[buy | purchase] [item] - buy the item from their store.
+sell [item] - if they sell the item and you have it, sell it to them.
+menu - display the store's menu
+[inventory | bag] - See current inventory
+help - displays this help
+[exit | done | quit] - Exit store sequence
+------------------
+COMBAT COMMANDS ONLY
+
+[attack | assault | assail] - attacks an enemy.
+[attack | assault | assail] [enemy] - attacks the specified enemy.
+[use | utilize] [item] - same as above
+[use | utilize] [skill] - attacks specified enemy with specified skill.
+[use | utilize] [skill] [enemy] - uses the skill on the enemy, enemy naming optional.
+[flee | retreat | run] - retreat from battle. Does not always work.
+[stats | status] - view the stats of those in battle.
+[inventory | bag] - view your items mid-battle.
+help - displays this help
+rest - regain some health in battle, uses up turn.
+[cancel | end | deactivate] [buff] - deactivates the specified buff

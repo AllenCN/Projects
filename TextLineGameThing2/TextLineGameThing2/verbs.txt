@@ -1,0 +1,15 @@
+get,take,grab
+drop,discard
+use,utilize
+open
+close,shut
+examine,check
+inventory,bag
+look
+talk,speak
+shop
+stats,status
+equip
+unequip
+engage,fight
+rest,wait
