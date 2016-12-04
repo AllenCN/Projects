@@ -34,10 +34,13 @@ vector<pair<string, int>> inventory;
 enum NounTypes {OBJECT, ITEM, EQUIPMENT};
 enum NPCTypes {NORMAL, ENGAGE, SHOPKEEP};
 
+//defines a direction (of which there are four)
 struct dir {
 	string text;
 	int code;
 };
+
+//defines the enemy data structure for easier loading of enemy data
 struct enemy_data {
 	string name;
 	string trigger;
@@ -52,6 +55,8 @@ struct enemy_data {
 	int baseGold;
 	int g_code = 0;
 };
+
+//defines the player's status at time of save/load for easier read/write.
 struct game_data {
 	string name;
 
@@ -83,9 +88,14 @@ int location = 0;
 default_random_engine main_gen;
 uniform_real_distribution<double> encDis(0.0,1.0);
 
+//Two exit conditions, if either are true, the game is over.
 bool game_over = false;
 bool bossDefeated = false;
 
+//Got inspiration for the below method from this URL:
+//http://www.dreamincode.net/forums/topic/199426-word-wrap-c/
+//This is used to help keep the text within the console's window
+//since this game will print out a lot of text.
 void textWrap(string str, size_t width = 80) {
 	string tmpWord;
 	string tmpLine;
@@ -108,6 +118,10 @@ void textWrap(string str, size_t width = 80) {
 	cout << tmpLine << tmpWord << endl;
 }
 
+//Split method from this source:
+//http://stackoverflow.com/a/7408245
+//is used heavily when managing data, and is reused in other classes
+//within this project as well.
 std::vector<std::string> split(const std::string &text, char sep) {
 	std::vector<std::string> tokens;
 	std::size_t start = 0, end = 0;
@@ -123,6 +137,14 @@ std::vector<std::string> split(const std::string &text, char sep) {
 	return tokens;
 }
 
+//the seven below methods each initialize the large collection of game data.
+//initDirs() - initializes the four directions NORTH, EAST, SOUTH and WEST
+//initVerbs() - initializes the verbs the game uses from a textfile
+//initMap() - initializes the game's rooms from a textfile
+//initNouns() - initializes the various things the player can interact with from textfile
+//initNPCs() - initializes the various NPCs the player can interact with from textfile
+//initSkills() - initializes the various skills the player can learn/may encounter from textfile
+//initEnemyData() - initializes and stores the enemy data for future use in encounters
 void initDirs() {
 	directions[NORTH].code = NORTH;
 	directions[NORTH].text = "NORTH";
@@ -364,6 +386,9 @@ bool initEnemyData(const string &enemyData = "enemydata.txt") {
 	return true;
 }
 
+//the three below methods check the player's inventory
+//print_inventory prints the player's inventory.
+//if they have more than 1 of a specific item the exact number is shown.
 void print_inventory(vector<pair<string, int>> &inv) {
 	cout << "ITEM \t QUANTITY" << endl;
 	cout << "-------------------" << endl;
@@ -377,6 +402,8 @@ void print_inventory(vector<pair<string, int>> &inv) {
 	cout << "-------------------" << endl;
 }
 
+//checks if a given item with the given name is in the inventory
+//used in noun-related checks.
 bool is_in_inventory(vector<pair<string, int>> &inv, string itemName) {
 	unsigned int loc;
 	for (loc = 0; loc < inv.size(); loc++) {
@@ -388,6 +415,8 @@ bool is_in_inventory(vector<pair<string, int>> &inv, string itemName) {
 	return loc != inv.size();
 }
 
+//fetches the index of a given item in the player's inventory, if they have it
+//returns -1 if they don't have it.
 int in_inventory(string itemName, vector<pair<string, int>> &inv) {
 	for (unsigned int i = 0; i < inv.size(); i++) {
 		if (inv[i].first == itemName)
@@ -396,15 +425,20 @@ int in_inventory(string itemName, vector<pair<string, int>> &inv) {
 	return -1;
 }
 
+//Finds an enemy from where the enemy data is stored and returns their data
+//If the program fails to find such an enemy, it will fail automatically
 enemy_data find_enemy(string code) {
 	for (unsigned int i = 0; i < enemyDatas.size(); i++) {
 		if (code == enemyDatas[i].trigger) {
 			return enemyDatas[i];
 		}
 	}
-	assert(false); //fails automatically, should not be possible
+	assert(false); //fails automatically, should not be possible to exit above loop without finding the enemy
 }
 
+//The player may have encountered enemies;
+//this method returns an enemy party to go up against them
+//in combat.
 vector<Enemy> set_encounter(vector<string> enemyNames) {
 	vector<Enemy> ret;
 	uniform_int_distribution<int> rng(1, 3);
@@ -441,6 +475,8 @@ vector<Enemy> set_encounter(vector<string> enemyNames) {
 	return ret;
 }
 
+//The player has used the ENGAGE command to fight an NPC
+//if the NPC can fight you, this method gives you that fight.
 vector<Enemy> set_engage(string trigger) {
 	vector<Enemy> ret;
 	enemy_data dat = find_enemy(trigger);
@@ -450,8 +486,10 @@ vector<Enemy> set_engage(string trigger) {
 	return ret;
 }
 
+//the "meat" of the program
+//this method parses the user's input.
 bool parse_command(int &loc, vector<string> &words, vector<pair<string, int>> &inv) {
-	int VERB_MATCH = -1;
+	int VERB_MATCH = -1; //three vars all check if there is a match.
 	int NOUN_MATCH = -1;
 	int NPC_MATCH = -1;
 	for (int i = 0; i < DIRS; i++) {
@@ -785,6 +823,7 @@ bool parse_command(int &loc, vector<string> &words, vector<pair<string, int>> &i
 	return false;
 }
 
+//prints the help from a text file
 void print_help(const string &helpFile = "helpfile.txt") {
 	ifstream help;
 	help.open(helpFile);
@@ -803,6 +842,7 @@ void print_help(const string &helpFile = "helpfile.txt") {
 	}
 }
 
+//prints the story from a text file
 void print_story(const string &storyFile = "storyfile.txt") {
 	ifstream story;
 	story.open(storyFile);
@@ -819,6 +859,7 @@ void print_story(const string &storyFile = "storyfile.txt") {
 	}
 }
 
+//saves the player to the game_data struct
 game_data save_player() {
 	game_data ret;
 	ret.name = player.name;
@@ -845,6 +886,7 @@ game_data save_player() {
 	return ret;
 }
 
+//Saves the game to a text file.
 void save_game() {
 	string fileName;
 	cout << "Enter a name for the file:\n>";
@@ -898,6 +940,7 @@ void save_game() {
 	}
 }
 
+//loads the player's skills from the save game.
 vector<Skill> load_player_skills(unsigned int size, vector<string> lines, int start) {
 	vector<Skill> ret;
 
@@ -914,6 +957,7 @@ vector<Skill> load_player_skills(unsigned int size, vector<string> lines, int st
 	return ret;
 }
 
+//loads the player's learnset from the save game.
 vector<pair<Skill, int>> load_learnset(unsigned int size, vector<string> lines, int start) {
 	vector<pair<Skill, int>> ret;
 
@@ -931,6 +975,7 @@ vector<pair<Skill, int>> load_learnset(unsigned int size, vector<string> lines, 
 	return ret;
 }
 
+//loads the player's inventory from the save game.
 void load_inventory(unsigned int size, vector<string> lines, int start) {
 	inventory.clear();
 
@@ -942,6 +987,7 @@ void load_inventory(unsigned int size, vector<string> lines, int start) {
 	assert(inventory.size() == size);
 }
 
+//loads the saved game from a text file.
 void load_game(string file) {
 
 	ifstream loadGame;
@@ -1005,10 +1051,12 @@ void load_game(string file) {
 	}
 }
 
+//if gameover = true, the player failed to complete the game.
 void print_bad_ending() {
 	cout << "You died in battle, leaving the city in the tyrannical rule of Boss Mad." << endl;
 }
 
+//if bossDefeated = true, the player beat the game.
 void print_good_ending() {
 	textWrap("Congrats, Boss Mad has been defeated! You have liberated the city! You are the hero of the day!");
 	textWrap("It's all thanks to you, " + player.name + "!");
@@ -1025,7 +1073,10 @@ int main(int argc, char** argv) {
 	inventory.push_back(make_pair("SWORD", 1));
 	inventory.push_back(make_pair("SHIELD", 1));
 	const string prompt = ">";
-	initDirs();
+	initDirs(); //this method shouldn't fail
+
+	//the six below methods can fail due to bad input/non-existent files
+	//if any of them return false, the program immediately exits.
 	if (!initVerbs()) {
 		return 1;
 	}
@@ -1045,10 +1096,13 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
+	//Quit is initialized
 	vector<string> quits;
 	quits.push_back("exit");
 	quits.push_back("done");
 	Word QUIT("QUIT", quits);
+	//seed the player's name to create a random experience for each
+	//unique player
 	seed_seq seq(player.name.begin(), player.name.end());
 	main_gen.seed(seq);
 	player.create_class(allSkills);

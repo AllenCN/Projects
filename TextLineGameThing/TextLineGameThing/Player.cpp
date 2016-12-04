@@ -118,18 +118,25 @@ void Player::createClass(vector<Skill> &all) {
 }
 
 void Player::level_up() {
+
+	//define the distributions for the points
+	//bigPBoost gives HP or MP a bigger boost
+	//smlPBoost gives the other stat the smaller boost depending on class
+	//big- mid- and smlBoost all work the same way depending on the chosen class.
     uniform_int_distribution<int> bigPBoost(10,20);
     uniform_int_distribution<int> smlPBoost(5, 10);
     uniform_int_distribution<int> bigBoost(2,4);
     uniform_int_distribution<int> midBoost(1,3);
     uniform_int_distribution<int> smlBoost(0,2);
+
+	//check if player has leveled up
     if (xp >= lvlUp_xp) {
-        while (xp >= lvlUp_xp) {
+        while (xp >= lvlUp_xp) { //check if the player gained enough EXP to level up again between levels
             cout << "Level up! " << name << " is now level " << to_string(++level) << "!" << endl;
             if (level < MAX_LEVEL)
                 lvlUp_xp = level * level * base_xp;
             else
-                lvlUp_xp = (numeric_limits<long>::max)();
+                lvlUp_xp = (numeric_limits<long>::max)(); //You can't level up any more if your level is at MAX.
         }
         //check learnset
         if (learnset.size() > 0 && level >= learnset.front().second) {
@@ -168,13 +175,14 @@ void Player::level_up() {
                 speed += smlBoost(gen);
               break;  
         }
-        
+        //refill health and mana on level up
         hp = max_hp;
         mp = max_mp;
     }
 }
 
 bool Player::do_equip(noun n) {
+	//Check if the noun is equipped there and make the appropriate changes
     if (equipped[n.where].code == -1) {
         equipped[n.where] = n;
         str += n.strUp;
@@ -192,6 +200,7 @@ bool Player::do_equip(noun n) {
 }
 
 noun Player::do_unequip(noun n) {
+	//unequip if there.
     noun returnval = equipped[n.where];
     equipped[n.where].code = -1;
     equipped[n.where].word = "";
@@ -205,6 +214,7 @@ noun Player::do_unequip(noun n) {
 }
 
 bool Player::is_equipped_with(noun n) {
+	//check if they're equipped with the input noun
     for (int i = 0; i < equipped.size(); i++)
     {
         if (equipped[i].code == n.code) {
@@ -215,6 +225,7 @@ bool Player::is_equipped_with(noun n) {
 }
 
 void Player::rest() {
+	//Tell the player they're resting and heal them by 25%
     cout << name << " rests to recover." << endl;
     heal(max_hp/4, max_mp/4);
 }
@@ -231,7 +242,10 @@ void Player::view_stats() {
     cout << "\n----------------" << endl;
     cout << "Level " << to_string(level) << endl;
     cout << "EXP:\t" << to_string(xp) << endl;
-    cout << "To next level:\t" << to_string(lvlUp_xp);
+	if (level < MAX_LEVEL) //Check if player is not max level yet
+		cout << "To next level:\t" << to_string(lvlUp_xp);
+	else //if they are, they cannot level up further.
+		cout << "To next level:\t0";
     cout << "\n----------------" << endl;
     cout << "HP:\t" << to_string(hp) << " / " << to_string(max_hp) << endl;
     cout << "MP:\t" << to_string(mp) << " / " << to_string(max_mp) << endl;
@@ -244,17 +258,20 @@ void Player::view_stats() {
     print_skills();
 }
 
+//prints the player's equipment
 void Player::print_equip() {
     for (int i = 0; i < 4; i++) {
         cout << parts[i] << "\t" << equipped[i].word << endl;
     }
 }
 
+//awards the exp to the player and then calls level_up function
 void Player::victory(long exp) {
     xp += exp;
     level_up();
 }
 
+//constructs the learnset based on the player's given class
 void Player::construct_learnset(vector<Skill> &all, 
         vector<int> skillCodes, vector<int> lvls) {
     for (int i = 0; i < skillCodes.size(); i++) {
