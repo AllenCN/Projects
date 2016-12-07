@@ -29,6 +29,10 @@ using namespace std;
 #define GLOBAL_H
 const string HELPFILE = "helpfile.txt";
 
+//Got inspiration for the below method from this URL:
+//http://www.dreamincode.net/forums/topic/199426-word-wrap-c/
+//This is used to help keep the text within the console's window
+//since this game will print out a lot of text.
 void textWrap(string str, size_t width = 80) {
     string tmpWord;
     string tmpLine;
@@ -63,7 +67,9 @@ void display_help() {
     cout << "---------------------------" << endl;
     
 }
-
+//Split method from this source:
+//http://stackoverflow.com/a/7408245
+//is used to manage the user's input.
 std::vector<std::string> split(const std::string &text, char sep) {
     std::vector<std::string> tokens;
     std::size_t start = 0, end = 0;
