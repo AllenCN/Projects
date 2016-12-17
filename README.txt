@@ -11,11 +11,6 @@ Here, I made everything a class object, so that I could better use this as a bas
 truly wanted to make. As such, the game data is relegated to text files. Future versions may attempt
 to make use of XML or JSON files to better store the data. SQL has also been considered for data storage.
 
-YGOLPCalcAgain - A project started in C#. May be restarted later, since my first time using Visual C# did
-not go so well. This was meant to be a redo of my usual go-to for programming practice: an application
-that would keep track of up to four players' life points at once. Due to me being unfamiliar with how
-Visual C# works, this did not go too well for me.
-
 YuGiOhConsoleCalc - In the same vein as the above, I wished to make a version of my go-to for programming 
 practice that used the command line for all its events. This would keep track of not only the remaining
 life points of each player, but how the life points changed and what turn it was. This also outputs the
